@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un produit</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .ajoute{
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        background-color: #f6f8f8;
+        box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+    }
+
+    .retour{
+        display: flex;
+        align-items: center;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    label{
+        margin-top: 5px;
+    }
+    input, select{
+        padding: 5px;
+        margin: 2px;
+        border: 1px solid #999;
+        outline: 0;
+    }
+
+    input:focus, select:focus{
+        border-color: #2BC48A;
+    }
+
+    input[type='submit']{
+        background-color: #2BC48A;
+        border: 1px;
+        color: white;
+
+    }
+
+    .img{
+        height: 35px;
+        margin: 5px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+    }
+
+</style>
+<body>
+    <section class="ajoute">
+        <div class="retour">
+            <a href="/vendeur/ajoute.php"><img src="/img/return-removebg-preview.png" alt="" width="30px"></a>
+            <p style="color: #2BC48A">Retour</p>
+        </div>
+        <h1>Ajouter un produit</h1>
+        <form action="post">
+            <label for="categorie">Séléctionnez une catégorie</label>
+            <select name="categorie" id="categorie">
+                <option value="">1</option>
+                <option value="">2</option>
+            </select>
+
+            <label for="Nom_produit">Nom produit</label>
+            <input type="text">
+            
+            <label for="prix">Prix</label>
+            <input type="number">
+
+            <label for="file" accept="Image/*">Image</label>
+            <div class="img">
+                <input  type="file">
+
+            </div>
+
+            <input type="submit" value="AJOUTER">
+
+        </form>
+    </section>
+</body>
+</html>

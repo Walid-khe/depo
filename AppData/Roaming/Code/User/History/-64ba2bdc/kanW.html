@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h3>Timer</h3>
+    <hr>
+    <button onclick="aff();" ondblclick="demarrer()">Démarrer</button>
+    <button ondblclick="arreter()" onclick="sup();">Arrêter</button>
+    <i id="indicateur"></i>
+    <div id="perio"></div>
+</div>
+
+<script>
+    function aff(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                    document.getElementById('indicateur').innerHTML='<br><b>M</b><br>' ;
+                }
+            };
+            xhr.open("GET", "", true);
+            xhr.send();
+        }
+        function sup(){
+            document.getElementById('indicateur').innerHTML='<br>A<br>'
+
+        }
+
+    var timerInterval; 
+
+    function demarrer() {
+        
+        timerInterval = setInterval(displayTime, 1000);
+    }
+
+    function arreter() {
+        
+        clearInterval(timerInterval);
+    }
+
+    function displayTime() {
+        
+        var currentTime = new Date();
+        var timeString = currentTime.toLocaleTimeString();
+        document.getElementById('perio').innerText = timeString;
+    }
+</script>
+</body>
+</html>

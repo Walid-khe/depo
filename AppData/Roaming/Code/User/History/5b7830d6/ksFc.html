@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMarket</title>
+    <link rel="stylesheet" href="/vendeur/ajout.css">
+</head>
+<body>
+    <div class="cadre">
+        <h1 class="login"><i>Bienvenu</i></h1>
+        
+      <!--  <?php if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) { echo "<h3>Bienvenue ". $nom . " " . $prenom. ",<br> votre compte a été bien créé. </h3>"; } ?> -->
+        <br>
+        <h3>Veuillez entrez vos identifiants pour vous connecter</h3>
+        
+        <form action="traitement.php" method="post">
+            <input type="email" name="nom_utilisateur" id="mail" placeholder="Entrez votre e-mail">
+            <br><input type="password" name="mot_pass" id="password" placeholder="Entrez votre mot de passe">
+            <br><button type="submit"><strong>LOG IN</strong></button>
+        </form>
+        <p class="forget">Forget Password?</p>
+        <p class="dont">Don't have an account ? <strong><a href="/vendeur/ajoute.html">SignUp</a></strong></p>
+    </div>
+</body>
+</html>

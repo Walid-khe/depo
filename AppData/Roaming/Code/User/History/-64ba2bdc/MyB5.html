@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h3>Timer</h3>
+    <hr>
+    <button onclick="startTimer();">Démarrer</button>
+    <button onclick="stopTimer();">Arrêter</button>
+    <div id="perio"></div>
+</div>
+
+<script>
+    var timerInterval; // Variable pour stocker l'intervalle de temps
+
+    function startTimer() {
+        // Démarrer l'affichage périodique de l'heure
+        timerInterval = setInterval(displayTime, 1000); // Appel toutes les 1 seconde
+    }
+
+    function stopTimer() {
+        // Arrêter l'affichage périodique de l'heure
+        clearInterval(timerInterval);
+    }
+
+    function displayTime() {
+        // Fonction pour afficher l'heure actuelle
+        var currentTime = new Date();
+        var timeString = currentTime.toLocaleTimeString();
+        document.getElementById('perio').innerText = timeString;
+    }
+</script>
+</body>
+</html>

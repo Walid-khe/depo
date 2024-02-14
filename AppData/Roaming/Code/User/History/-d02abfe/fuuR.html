@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var httpRequest;
+        var zoneSaisie;
+        var uploadInput;
+
+        function init() {
+            httpRequest = new XMLHttpRequest();
+            zoneSaisie = document.getElementById("nom");
+            uploadInput = document.getElementById("upload");
+        }
+
+        function prepareData() {
+            let nom = zoneSaisie.value;
+            let url = "post.php";
+            makeRequest(url, nom);
+        }
+
+        function uploadImage() {
+            let formData = new FormData();
+            formData.append("image", uploadInput.files[0]);
+            let url = "upload.php";
+            makeImageUploadRequest(url, formData);
+        }
+
+        function makeRequest(url, userName) {
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open('POST', url);
+            httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            httpRequest.send('nom=' + encodeURIComponent(userName));
+        }
+
+        function makeImageUploadRequest(url, formData) {
+            httpRequest.onreadystatechange = handleImageUploadResponse;
+            httpRequest.open('POST', url);
+            httpRequest.send(formData);
+        }
+
+        function alertContents() {
+            try {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        let reponse = JSON.parse(httpRequest.responseText);
+                        zoneSaisie.value = reponse.text;
+                    } else {
+                        alert("Un problème est survenu au cours de la requête.");
+                    }
+                }
+            } catch (e) {
+                alert("Une exception s’est produite : " + e.description);
+            }
+        }
+
+        function handleImageUploadResponse() {
+            try {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        let imageUrl = httpRequest.responseText;
+                        let imageContainer = document.getElementById("image-container");
+                        imageContainer.innerHTML = '<img src="' + imageUrl + '" />';
+                    } else {
+                        alert("Une erreur s'est produite lors du chargement de l'image.");
+                    }
+                }
+            } catch (e) {
+                alert("Une exception s'est produite : " + e.description);
+            }
+        }
+    </script>
+</head>
+<body onload="init();">
+    <input id="nom" type="text" />
+    <button onclick="prepareData();">Envoyer</button>
+    <br />
+    <input id="upload" type="file" />
+    <button onclick="uploadImage();">Uploader l'image</button>
+    <br />
+    <div id="image-container"></div>
+</body>
+</html>

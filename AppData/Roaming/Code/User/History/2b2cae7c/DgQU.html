@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="container-fluid">
+        <h3>Timer</h3>    <hr>
+        <button id="demarrer" onclick="countDown()"> Démarrer</button>
+        <i id="indicateur"></i>
+
+        <button id="arreter" onclick="arreter()">Arrêter</button>
+        
+        
+    </div>
+</body>
+    <script>
+        function date(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                    document.getElementById('indicateur').innerHTML='<br><b>M</b><br>' + Date();
+                }
+            };
+            xhr.open("GET", "date.php", true);
+            xhr.send();
+        }
+
+    
+            counter = setInterval(() => {
+                
+        
+            
+        }, 1000);
+
+            
+            
+        
+
+        function arreter() {
+                     clearInterval(counter);
+        }

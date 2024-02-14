@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #drop-zone {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var httpRequest;
+        var zoneSaisie;
+        var imagePreview;
+
+        function init() {
+            httpRequest = new XMLHttpRequest();
+            zoneSaisie = document.getElementById("nom");
+            imagePreview = document.getElementById("image-preview");
+
+            document.body.addEventListener("dragover", function (e) {
+                e.preventDefault();
+            });
+
+            document.getElementById("drop-zone").addEventListener("dragover", function (e) {
+                e.preventDefault();
+            });
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+        }
+
+        function handleFileSelect(event) {
+            event.preventDefault();
+            var file = event.dataTransfer.files[0];
+            document.getElementById("image-preview").src = URL.createObjectURL(file);
+
+            var formData = new FormData();
+            formData.append('nom', zoneSaisie.value);
+            formData.append('image', file);
+
+            makeRequestFormData("post2.php", formData);
+        }
+
+        function prepareDataFormData() {
+            let nom = zoneSaisie.value;
+            let url = "post2.php";
+
+            var formData = new FormData();
+            formData.append('nom', nom);
+            formData.append('image', document.getElementById('file-input').files[0]);
+
+            makeRequestFormData(url, formData);
+        }
+
+        function makeRequestFormData(url, formData) {
+            httpRequest.onreadystatechange = alertContents;
+            httpRequest.open('POST', url);
+            httpRequest.send(formData);
+        }
+
+        function alertContents() {
+            try {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status === 200) {
+                        let reponse = JSON.parse(httpRequest.responseText);
+                        zoneSaisie.value = reponse.nom;
+                        if (reponse.image) {
+                            imagePreview.src = reponse.image;
+                        }
+                    } else {
+                        alert("Un problème est survenu au cours de la requête.");
+                    }
+                }
+            }
+            catch (e) {
+                alert("Une exception s’est produite : " + e.description);
+            }
+        }
+    </script>
+</head>
+<body onload="init();">
+    <input id="nom" type="text"/>
+    <div id="drop-zone" ondragover="handleDragOver(event);" ondrop="handleFileSelect(event);">
+        Déposez vos fichiers ici
+    </div>
+    <br>
+    <img id="image-preview" style="max-width: 300px; max-height: 300px;">
+</body>
+</html>

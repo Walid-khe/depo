@@ -1,0 +1,54 @@
+<!-- saisieNom.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie de nom</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fonction pour récupérer les suggestions de communes en AJAX
+            function getSuggestions(input) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'suggestionsCommunes.php',
+                    data: { input: input },
+                    success: function(response) {
+                        // Mettre à jour la liste déroulante avec les suggestions
+                        $('#commune').html(response);
+                    }
+                });
+            }
+
+            // Écouteur d'événements sur la saisie de l'utilisateur
+            $('#communeText').on('input', function() {
+                var input = $(this).val();
+
+                // Ne déclencher la recherche de suggestions que lorsque l'utilisateur a saisi au moins 3 caractères
+                if (input.length >= 3) {
+                    getSuggestions(input);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="inscription.php" method="post">
+        <label for="nom">Nom du client :</label>
+        <input type="text" name="nom" required>
+
+        <!-- Champ de saisie de la commune -->
+        <label for="commune">Commune :</label>
+        <select name="commune" id="commune" required>
+            <!-- La liste des suggestions sera ajoutée ici dynamiquement via AJAX -->
+        </select>
+
+        <input type="submit" value="Enregistrer">
+    </form>
+</body>
+</html>
+
+

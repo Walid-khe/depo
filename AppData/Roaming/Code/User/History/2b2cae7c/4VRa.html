@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Différence de temps</title>
+</head>
+<body>
+    <h1>Différence de temps entre le serveur et le client</h1>
+    <p>Différence de temps : <span id="difference-temps"></span> secondes</p>
+    <button id="demarrer">Démarrer</button>
+
+    <script>
+      
+        function mettreAJourDifferenceTemps() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+             
+                    var timeDifference = parseInt(this.responseText);
+                    
+                    document.getElementById('difference-temps').textContent = timeDifference;
+                }
+            };
+            xhr.open("GET", 'get_time_difference.php', true);
+            xhr.send();
+        }
+
+        
+        document.getElementById('demarrer').addEventListener('click', function () {
+          
+            mettreAJourDifferenceTemps();
+
+         
+            setInterval(mettreAJourDifferenceTemps, 1000); 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter au panier</title>
+    <link rel="stylesheet" href="panier.css">
+</head>
+<body>
+    <main id="fenetrePanier">
+        <section class="headerPanier">
+                <h2>Votre panier</h2>
+                <p>X</p>
+        </section>
+        <section class="continuer">
+            <button>Continuer mes achats</button>
+        </section>
+        <ul>
+            <li>
+
+                <section id="produitChoisi">
+                    <div>
+                        <img src="/img/4.jpg" alt="imgPanier" height="70px" width="70px">
+                    </div>
+                    <div>
+                        <h3>Nom de produit</h3>
+                        <p style="margin-bottom: 5px;">Quantité :</p>
+                        <input class="quantite" type="number" min="0.1" placeholder="0.5">
+                        <p class="kg_prix">Kg x <strong>19$</strong></p>
+                    </div>
+                    <div>
+                        <img src="/img/referer(2).png" alt="supprimer" height="30px" width="30px" style="margin-top: 40px;">
+                    </div>
+                </section>
+                <section>
+                    <textarea placeholder="Commentaire" name="commentaire" 
+                    id="commentaire" cols="30" rows="2" style="resize: none; margin-left: 10px; margin-right: 20px;"></textarea>
+                </section>
+            </li>
+        </ul>
+        <footer>
+            <div class="total">
+            <h3>Total</h3>
+            <h3>9.50 $</h3>
+        </div>
+        <p style="text-align: center;">Retrait au magasin</p>
+        <div class="Commander">
+            <button>Commander</button>
+        </div>
+    </footer>
+    </main>
+
+</body>
+</html>

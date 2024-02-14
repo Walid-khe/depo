@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heure du serveur</title>
+</head>
+<body>
+    <h1>Heure du serveur</h1>
+    <p>Heure du client : <span id="heure-client"></span></p>
+    <p>Heure du serveur : <span id="heure-serveur"></span></p>
+    <button id="demarrer">Démarrer</button>
+
+    <script>
+     
+        function mettreAJourHeureServeur() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                    
+                    var timestamp = parseInt(this.responseText);
+                   
+                    var date = new Date(timestamp * 1000); 
+                    
+                    document.getElementById('heure-serveur').textContent = date.toLocaleTimeString();
+                }
+            };
+            xhr.open("GET", 'get_time.php', true);
+            xhr.send();
+        }
+
+       
+        document.getElementById('demarrer').addEventListener('click', function () {
+            
+            mettreAJourHeureServeur();
+
+            
+            setInterval(mettreAJourHeureServeur, 2000); 
+        });
+
+        
+        var heureClient = new Date();
+        document.getElementById('heure-client').textContent = heureClient.toLocaleTimeString();
+    </script>
+</body>
+</html>

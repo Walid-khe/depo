@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h3>Timer</h3>
+    <hr>
+    <button onclick="demarrer();">Démarrer</button>
+    <i id="indicateur"></i>
+    <button  onclick="arreter();">Arrêter</button>
+    <div id="test"></div>
+</div>
+
+<script>
+    
+    
+    
+    function afficheHeure() {
+        
+            document.getElementById('indicateur').innerHTML='<br><b>M</b><br>' ;
+            var date = new Date();
+            var timeString = date.toLocaleTimeString();
+            document.getElementById('test').innerText = timeString;
+        }
+
+        
+    var periode; 
+    
+    function demarrer() {
+        
+        periode = setInterval(afficheHeure, 1000);
+    }
+    
+    function arreter() {
+        
+        document.getElementById('indicateur').innerHTML='<br>A<br>'
+        clearInterval(periode);
+    }
+
+</script>
+</body>
+</html>

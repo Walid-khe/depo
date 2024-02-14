@@ -1,0 +1,100 @@
+<!--
+<?php 
+session_start();
+
+// Connexion à la base de données (assurez-vous d'ajuster ces paramètres en fonction de votre configuration)
+$serveur = "votre_serveur";
+$utilisateur = "walid_kherroubi";
+$mot_de_passe = "walid2002";
+$base_de_donnees = "produits";
+
+$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
+
+// Vérifier la connexion
+if ($connexion->connect_error) {
+    die("La connexion à la base de données a échoué : " . $connexion->connect_error);
+}
+
+// Récupérer les données du formulaire
+$categorie = $_POST['choisir_categorie'];
+$nom_produit = $_POST['nom_produit'];
+$photo_produit = $_FILES['photo_produit']['name'];
+$prix = $_POST['prix'];
+
+// Échapper les données pour éviter les injections SQL (assurez-vous de faire cela pour des raisons de sécurité)
+$categorie = $connexion->real_escape_string($categorie);
+$nom_produit = $connexion->real_escape_string($nom_produit);
+$photo_produit = $connexion->real_escape_string($photo_produit);
+$prix = (float)$prix;
+
+// Requête d'insertion des données dans la table
+$insert_query = "INSERT INTO Produits (categorie, nom_produit, photo_produit, prix) VALUES ('$categorie', '$nom_produit', '$photo_produit', $prix)";
+
+// Exécution de la requête
+if ($connexion->query($insert_query) === TRUE) {
+    echo "Le produit a été ajouté avec succès.";
+} else {
+    echo "Erreur lors de l'ajout du produit : " . $connexion->error;
+}
+
+// Fermer la connexion à la base de données
+$connexion->close();
+?>
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/code/css/header.css">
+    <link rel="stylesheet" href="/code/css/ajout.css">
+</head>
+
+<header class="mainHeader">
+    <h2>Walid Market</h2>
+    <p><!--<?php ?>--></p><br>
+    <img src="" alt="img">
+</header>
+
+<body>
+    <h1>Bienvenue</h1><hr>
+    <h2>Ajouter un produit</h2>
+
+    <div class="cadre">
+        <form action="../client/5Acceuil.php" method="post">
+    
+            <h3>Veuillez choisir la catégorie</h3>
+            <select name="choisir_caegorie" id="choisir_caegorie">
+                <option value="homme">Homme</option>
+                <option value="femme">femme</option>
+                <option value="enfant">Enfant</option>
+                <option value="homme">Homme</option>
+            </select><br>
+        
+            <label for="nom_produit">Nom du produit</label><br>
+            <input name="nom_produit" type="text"><br>
+        
+            <label for="photos">Choissisez un ou des images pour le produit</label><br>
+            <input type="file" name="photo_produit" id="photo_produit"><br>
+        
+            <label for="prix">Prix</label><br>
+            <input name="prix" type="number">
+    
+            <input type="submit">
+        </form>
+
+    </div>
+
+
+   
+
+
+    
+    
+    
+</body>
+</html>

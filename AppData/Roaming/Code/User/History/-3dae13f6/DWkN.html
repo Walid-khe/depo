@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="ajout.css">
+</head>
+
+<header class="mainHeader">
+    <h2 class="market">Boucherie L'Orientale</h2>
+    <p><!--<?php ?>--></p><br>
+    <img src="" alt="img">
+</header>
+
+<body>
+    <h1>Bienvenue</h1>
+    <h2 class="ajt_prd">Ajouter un produit</h2><hr>
+
+    <div class="cadre">
+    <form action="" method="post" enctype="multipart/form-data">
+
+    
+            <h3>Veuillez choisir la catégorie</h3>
+            <select name="categorie" id="categorie">
+                <option value="homme">Veau</option>
+                <option value="femme">Boeuf</option>
+                <option value="enfant">Scalope</option>
+                <option value="homme">Autre</option>
+            </select><br>
+            <p>ou bien <button onclick="ajt_cat()">Ajouter une catégorie en cliquant ici</button></p>
+            <script>
+                function ajt_cat(){
+                    x = document.innerHtml('<h2>walid</h2>')
+                    
+                }
+            </script>
+        
+            <label for="nom_produit">Nom du produit</label><br>
+            <input name="nom_produit" type="text"><br>
+        
+            <label for="photos">Choissisez un ou des images pour le produit</label><br>
+            <input type="file" name="photo_produit" id="photo_produit"><br>
+        
+            <label for="prix">Prix</label><br>
+            <input name="prix" type="number">
+    
+            <input class="submit" type="submit">
+        </form>
+
+    </div>

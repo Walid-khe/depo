@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h3>Timer</h3>
+    <hr>
+    <button onclick="demarrer();">Démarrer</button>
+    <button onclick="arreter();">Arrêter</button>
+    <div id="perio"></div>
+</div>
+
+<script>
+    var timerInterval; 
+
+    function demarrer() {
+        
+        timerInterval = setInterval(displayTime, 1000);
+    }
+
+    function arreter() {
+        
+        clearInterval(timerInterval);
+    }
+
+    function displayTime() {
+        
+        var currentTime = new Date();
+        var timeString = currentTime.toLocaleTimeString();
+        document.getElementById('perio').innerText = timeString;
+    }
+</script>
+</body>
+</html>

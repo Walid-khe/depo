@@ -1,0 +1,25 @@
+<script>
+    // Fonction pour récupérer l'heure actuelle et le chrono depuis le serveur
+    function getTimeAndChrono() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'get_time_and_chrono.php', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                if (data.heure !== undefined && data.chrono !== undefined) {
+                    // Afficher l'heure et le chrono dans la page HTML
+                    document.getElementById('heure-serveur').textContent = 'Heure du serveur : ' + data.heure;
+                    document.getElementById('chrono').textContent = 'Chrono : ' + data.chrono + ' secondes';
+                } else if (data.error !== undefined) {
+                    // En cas d'erreur
+                    document.getElementById('heure-serveur').textContent = 'Erreur : ' + data.error;
+                    document.getElementById('chrono').textContent = '';
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Appeler getTimeAndChrono() périodiquement (par exemple, toutes les secondes)
+    setInterval(getTimeAndChrono, 1000);
+</script>

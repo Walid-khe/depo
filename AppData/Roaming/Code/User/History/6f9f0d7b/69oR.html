@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Clock</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Heure du serveur :</h1>
+    <div id="server-time">
+        Chargement en cours...
+    </div>
+
+    <script>
+        // Fonction pour récupérer l'heure du serveur via AJAX
+        function getServerTime() {
+            $.ajax({
+                url: 't.php', // Nom du fichier PHP pour récupérer l'heure du serveur
+                method: 'GET',
+                success: function (data) {
+                    // Afficher l'heure du serveur dans la div 'server-time'
+                    $('#server-time').text(data);
+                }
+            });
+        }
+
+        // Appeler getServerTime() périodiquement (par exemple, toutes les secondes)
+        setInterval(getServerTime, 1000);
+    </script>
+</body>
+</html>

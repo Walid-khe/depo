@@ -1,0 +1,151 @@
+<?php 
+/*
+session_start();
+
+$_SESSION["nom"] = $_POST["nom"];
+$_SESSION["prenom"] = $_POST["prenom"];
+$_SESSION["choisir_caegorie"] = $_POST["choisir_caegorie"];
+$_SESSION["nom_produit"] = $_POST["nom_produit"];
+$_SESSION["photo_produit"] = $_POST["photo_produit"];
+$_SESSION["prix"] = $_POST["prix"];
+
+$nom = $_SESSION["nom"];
+$prenom = $_SESSION["prenom"];
+$categorie = $_SESSION["choisir_caegorie"];
+$nom_produit = $_SESSION["nom_produit"];
+$photo_produit = $_SESSION["photo_produit"];
+$prix = $_SESSION["prix"];
+
+?>*/
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+    <link rel="stylesheet" href="/code/css/Acc.css">
+    <link rel="stylesheet" href="/code/css/header.css">
+</head>
+
+<header class="mainHeader">
+    <h2>Walid Market</h2>
+    <p><?php echo $nom ?></p><br><img src="" alt="img">
+</header>
+
+<body>
+    <section id="gauche">
+        <div id="container">
+            <input type="search" name="search" id="search" placeholder="Search">
+            <h2 class="categories">Catégories</h2>
+            <ul id="menu_categories">
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Categorie</a>
+                </li>
+            
+                
+                
+            </ul>
+        </div>
+        
+    </section>
+    
+    <section id="droite">
+        <div>
+            
+            <div class="buttons">
+                <input type="button" value="Menu">
+                <input type="button" value="Top produits">
+                <input type="button" value="Promotion">
+            </div>
+            <h1 class="nos_produits">NOS PRODUITS</h1>
+        </div>
+        <div>
+            <ul id="menu_produits">
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                <li>
+                    <img src="img4.png" alt="">
+                    <a href="http://">Nom de produit</a>
+                    <p class="prix">9.99$</p>
+                    <input class="acheter" type="submit" value="Acheter">
+                </li>
+                
+                
+                
+                
+            </ul>
+        </div>
+    </section>
+    
+</body>
+</html>

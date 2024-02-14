@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="pg.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <h3>Timer</h3>    <hr>
+        <button id="demarrer" onclick="countDown()"> Démarrer</button>
+        <i id="indicateur"></i>
+
+        <div id="container">
+            <p id="days"></p>
+            <p id="hours"></p>
+            <p id="minutes"></p>
+            <p id="secondes"></p>
+        </div>
+        <button id="arreter" onclick="arreter()">Arrêter</button>
+        
+        
+    </div>
+</body>
+    <script>
+        function date(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                   
+                }
+            };
+            xhr.open("GET", "", true);
+            xhr.send();
+        }
+
+        function countDown(){
+            let datelim = new Date("Dec 31, 2023 23:59:59").getTime();
+            counter = setInterval(() => {
+                
+                let mnt = new Date();
+            let diff = datelim - mnt;
+
+            let days = diff / (1000 * 60 * 60 * 24);
+            document.getElementById("days").innerHTML = Math.floor(days);
+
+            let hours =( diff % (1000 * 60 * 60 * 24)) /(1000 * 60 * 60);
+            document.getElementById("hours").innerHTML = Math.floor(hours);
+            
+            let minutes =( diff % (1000 * 60 * 60)) /(1000 * 60);
+            document.getElementById("minutes").innerHTML = Math.floor(minutes);
+            
+            let secondes =( diff % (1000 * 60)) /(1000);
+            document.getElementById("secondes").innerHTML = Math.floor(secondes);
+            
+        }, 1000);
+
+            
+            
+        }
+
+        function arreter() {
+                     clearInterval(counter);
+        }
+2
+    
+
+        
+    </script>
+</html>

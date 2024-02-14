@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chronomètre</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Chronomètre</h1>
+    <p id="heure-serveur">Heure du serveur </p>
+    <p id="chrono">Chrono : </p>
+
+    <script>
+        
+        function getTimeAndChrono() {
+            $.ajax({
+                url: 'get_time_and_chrono.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.heure !== undefined && data.chrono !== undefined) {
+                        // Afficher l'heure et le chrono dans la page HTML
+                        $('#heure-serveur').text('Heure du serveur : ' + data.heure);
+                        $('#chrono').text('Chrono : ' + data.chrono + ' secondes');
+                    } else if (data.error !== undefined) {
+                        // En cas d'erreur
+                        $('#heure-serveur').text('Erreur : ' + data.error);
+                        $('#chrono').text('');
+                    }
+                }
+            });
+        }
+
+        // Appeler getTimeAndChrono() périodiquement (par exemple, toutes les secondes)
+        setInterval(getTimeAndChrono, 1000);
+    </script>
+</body>
+</html>
+

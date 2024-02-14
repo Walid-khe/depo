@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ajout.css">
+    <script src="/vendeur/vend.js"></script>
+</head>
+
+<header class="mainHeader">
+    <img src="/img/logo.png" alt="" width="50px" style="border-radius: 40px;">
+    <h4 class="market">Boucherie L'Orientale</h4>
+</header>
+
+<body>
+    <h1>Bienvenue</h1>
+    <h2>Vous voulez:</h2>
+
+    <section id="cadre">
+        <div class="btn">
+            <button id="btn_cat" onclick="cat()">Ajouter une catégorie</button>
+            <button id="btn_prd" onclick="prd()">Ajouter un produit</button>
+        </div>
+    </section>
+
+        <section id="cat" style="display: none;">
+            <h3>Ajouter une catégorie</h3>
+
+            <input type="text" name="nom_categorie" id="nom_categorie" placeholder="Entrez le nom du catégorie">
+            <input class="submit" type="submit" value="Terminer">
+            <a href="ajoute.html">Annuler</a>
+        </section>
+    
+
+    <section id="prd" style="display: none;">
+        <form>
+            <h3>Ajouter un produit</h3>
+                <h4>Veuillez choisir la catégorie</h4>
+
+                <select name="categorie" id="categorie">
+                    <option value="homme">Veau</option>
+                    <option value="femme">Boeuf</option>
+                    <option value="enfant">Scalope</option>
+                    <option value="homme">Autre</option>
+                </select><br>
+
+            <input name="nom_produit" type="text" placeholder="Nom du produit"><br>
+
+            <h3 class="label">Choissisez une image pour votre produit<h3><br>
+            <input type="file" name="photo_produit" id="photo_produit"><br>
+
+            <input name="prix" type="number" placeholder="Entrez le prix">
+
+            <input class="submit" type="submit"><br>
+            <a href="ajoute.html">Annuler</a>
+        </form>
+    </section>
+</body>
+
+</html>
+

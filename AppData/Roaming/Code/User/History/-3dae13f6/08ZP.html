@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ajout.css">
+</head>
+
+<header class="mainHeader">
+    <img src="/img/logo.png" alt="" width="50px" style="border-radius: 40px;">
+    <h4 class="market">Boucherie L'Orientale</h4>
+</header>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ajout.css">
+</head>
+
+<body>
+    <h1>Bienvenue</h1>
+    <h2 class="ajt_prd">Ajouter un produit</h2>
+
+    <div class="cadre">
+        <form>
+            <section class="categorie">
+
+                <h3>Veuillez choisir la catégorie</h3>
+
+                <select name="categorie" id="categorie">
+                    <option value="homme">Veau</option>
+                    <option value="femme">Boeuf</option>
+                    <option value="enfant">Scalope</option>
+                    <option value="homme">Autre</option>
+                </select><br>
+
+                <label for="submit">Ou bien</label><br>
+                
+                <div class="center-input">
+                    <button type="button" onclick="myFunction()">Ajouter une nouvelle catégorie</button><br id="ajouterCategorieButton">
+                </div>
+                <div id="nouvelle_cat">
+                </div>
+
+                <script>
+                    function myFunction() {
+                        var x = document.createElement("INPUT");
+                        x.setAttribute("type", "text");
+                        x.setAttribute("placeholder", "Entrez le nom du nouvelle catégorie");
+                
+                        // Insérer le nouvel élément après le bouton
+                        var addButton = document.getElementById("ajouterCategorieButton");
+                        var br = document.createElement("br");
+                        document.body.appendChild(br);
+                        addButton.insertAdjacentElement("afterend", x);
+                    }
+                </script>
+                
+
+            </section>
+
+            <label for="nom_produit">Nom du produit</label><br>
+            <input name="nom_produit" type="text"><br>
+
+            <label for="photos">Choissisez un ou des images pour le produit</label><br>
+            <input type="file" name="photo_produit" id="photo_produit"><br>
+
+            <label for="prix">Prix</label><br>
+            <input name="prix" type="number">
+
+            <input class="submit" type="submit">
+        </form>
+    </div>
+</body>
+
+</html>
+

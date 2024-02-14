@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h3>Timer</h3>    <hr>
+        <button onclick="countDown()"> Démarrer</button>
+        <i id="indicateur"></i>
+        <button onclick="document.getElementById('indicateur').innerHTML='<strong>A</strong>';">Arrêter</button>
+        
+        <p id="vv"></p>
+    </div>
+</body>
+    <script>
+        function date(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                    document.getElementById('indicateur').innerHTML='<br><b>M</b><br>' + Date();
+                }
+            };
+            xhr.open("GET", "", true);
+            xhr.send();
+        }
+
+        function countDown(){
+            let datelim = new Date("Dec 31, 2023 23:59:59").getTime();
+            let mnt = new Date();
+            let diff = datelim - mnt;
+            document.getElementById("vv").innerHTML ="<p> diff =</p>"+ diff;
+
+            let days = diff / (1000 * 60 * 60 * 24);
+            let hours =( diff % (1000 * 60 * 60 * 24)) /(1000 * 60 * 60);
+            document.getElementById("vv").innerHTML = hours;
+
+            
+        }
+
+        
+    </script>
+</html>

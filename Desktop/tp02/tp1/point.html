@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h3>Timer</h3>
+    <hr>
+    <button onclick="demarrer();">Démarrer</button>
+    <i id="indicateur"></i>
+    <button  onclick="arreter();">Arrêter</button>
+    <div id="test"></div>
+</div>
+
+<script>
+    
+    var i;
+    
+    function affichePoints() {
+        i = document.getElementById('indicateur').innerText='.';
+        
+        }
+
+        
+    var periode; 
+    
+    function demarrer() {
+        
+        periode = setInterval(affichePoints, 1000);
+    }
+    
+    function arreter() {
+        
+        document.getElementById('indicateur').innerHTML='';
+        clearInterval(periode);
+        document.getElementById('test').innerHTML='';
+        
+    }
+
+</script>
+</body>
+</html>

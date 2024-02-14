@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="somme()">calcule</button>
+    <h2></h2>
+</body>
+<script>
+
+    function somme(valeur, s){
+        var s = 0;
+        var table = [3 ,9 , 2];
+        
+    
+        for (valeur in table){
+    
+            s += table[valeur];
+            
+        }
+        return s;
+    }
+    console.log(somme);
+
+
+ 
+</script>
+</html>

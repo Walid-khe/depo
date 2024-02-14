@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="commande.css">
+    <script src="/client/menu.js"></script>
+</head>
+<header>
+    <div id="Header">
+      <button id="btnMenu" type="menu" onclick="OfMenu()">
+        <img src="/img/menu-dots.png" alt="" height="50px" width="50px">
+      </button>
+        <img class="logo" src="/img/logo5.png" alt="" height="80px" width="80px">
+       <a href="/client/Produits.php"><button class="btn-panier">
+         <img src="/img/add-cart.png" alt=""height="35px" width="40px">
+       </button> </a>
+    </div>
+    
+    <nav id="menuPrincipale">
+        <ul>
+            <a href="Acceuil.php"><li>Acceuil</li></a>
+            <a href="/client/Produits.php"><li>Produits</li></a>
+            <a href=""><li>A propos</li></a>
+            <a href="contact.php"><li>Nous contacter</li></a>
+            
+          </ul>
+     </nav>
+            
+  </header>
+<body>
+    <main>
+        <section class="cadre">
+            <h1>Confirmation</h1>
+            <h3>Vous avez selectionné:</h3>
+            <ul>
+        
+            </ul>
+            <h3>Totale de votre commande : $</h3>
+            <form action="confirmer_commande.php">
+                <label for="datetime" style="color: rgba(255, 0, 13, 0.984);">Quand récuperez-vous votre commane ?</label>
+                <input class="date" type="datetime-local">
+        
+                <input class="submit" type="submit" value="Confirmer">
+            </form>
+            <a href="Produits.php">Modifier mon panier</a>
+        </section>
+    </main>
+</body>
+</html>

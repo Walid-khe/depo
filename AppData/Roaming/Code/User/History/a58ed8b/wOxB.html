@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chronomètre</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Chronomètre</h1>
+    <p id="heure-serveur">Heure du serveur : En attente...</p>
+    <p id="chrono">Chrono : En attente...</p>
+
+    <script>
+        // Fonction pour démarrer le chronomètre
+        function startChrono() {
+            $.ajax({
+                url: 'set_server_time.php',
+                method: 'GET',
+                success: function (response) {
+                    if (response === 'success') {
+                        // Afficher un message de démarrage du chronomètre
+                        $('#chrono').text('Chrono démarré.');
+                    } else {
+                        // En cas d'erreur
+                        $('#chrono').text('Erreur : le chronomètre n\'a pas pu être démarré.');
+                    }
+                }
+            });
+        }
+
+        // Démarrer le chronomètre lors du chargement de la page
+        startChrono();
+
+        // Fonction pour récupérer l'heure actuelle et le chrono depuis le serveur
+        function getTimeAndChrono() {
+            $.ajax({
+                url: 'get_time_and_chrono.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.heure !== undefined && data.chrono !== undefined) {
+                        // Afficher l'heure et le chrono dans la page HTML
+                        $('#heure-serveur').text('Heure du serveur : ' + data.heure);
+                        $('#chrono').text('Chrono : ' + data.chrono + ' secondes');
+                    } else if (data.error !== undefined) {
+                        // En cas d'erreur
+                        $('#heure-serveur').text('Erreur : ' + data.error);
+                        $('#chrono').text('');
+                    }
+                }
+            });
+        }
+
+        
+        setInterval(getTimeAndChrono, 1000);
+    </script>
+</body>
+</html>

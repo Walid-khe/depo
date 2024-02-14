@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h3>Timer</h3>    <hr>
+        <button onclick="date()"> Démarrer</button>
+        <i id="indicateur"></i>
+        <button onclick="document.getElementById('indicateur').innerHTML='<strong>A</strong>';">Arrêter</button>
+    </div>
+</body>
+    <script>
+        function date(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState === 4 && this.status === 200){
+                    document.getElementById('indicateur').innerHTML='<b>M</b>';
+
+                    let tarikh = new Date();
+                    document.write(tarikh);
+                }
+            };
+            xhr.open("GET", "", true);
+            xhr.send();
+        }
+    </script>
+</html>

@@ -1,0 +1,59 @@
+<!-- saisieNom.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie de nom</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Fonction pour récupérer les suggestions de communes en AJAX
+            function getSuggestions(input) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'suggestionsCommunes.php',
+                    data: { input: input },
+                    success: function(response) {
+                        // Mettre à jour la liste des suggestions
+                        $('#suggestions').html(response);
+                    }
+                });
+            }
+
+            // Écouteur d'événements sur la saisie de l'utilisateur
+            $('#commune').on('input', function() {
+                var input = $(this).val();
+
+               
+                if (input.length >= 3) {
+                    getSuggestions(input);
+                }
+            });
+
+
+            $('#suggestions').on('click', 'div', function() {
+                var selectedCommune = $(this).text();
+                $('#commune').val(selectedCommune);
+                $('#suggestions').empty();
+            });
+        });
+    </script>
+</head>
+<body>
+    <form action="ins.php" method="post">
+        <label for="nom">Nom du client :</label>
+        <input type="text" name="nom" required>
+
+        <label for="commune">Commune :</label>
+        <input type="text" name="commune" id="commune" required>
+
+        <div id="suggestions"></div>
+
+        <input type="submit" value="Enregistrer">
+    </form>
+</body>
+</html>
+
